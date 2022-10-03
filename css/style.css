@@ -1,0 +1,239 @@
+/* Reset */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+figure,
+hr,
+blockquote,
+a {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Variables */
+
+:root {
+  --main-bg-clr: hsl(222, 26%, 31%);
+  --keypad-clr: hsl(223, 31%, 20%);
+  --screen-clr: hsl(224, 36%, 15%);
+  --delete-btn-clr: hsl(225, 21%, 49%);
+  --delete-btn-shadow-clr: hsl(224, 28%, 35%);
+  --equal-btn-clr: hsl(6, 63%, 50%);
+  --equal-btn-shadow-clr: hsl(6, 70%, 34%);
+  --key-clr: hsl(30, 25%, 89%);
+  --key-shadow-clr: hsl(28, 16%, 65%);
+  --text-clr: hsl(221, 14%, 31%);
+  --white-clr: hsl(0, 0%, 100%);
+  --fs: 2rem;
+  --body-ff: "League Spartan", sans-serif;
+}
+
+.light-mode {
+  --main-bg-clr: hsl(0, 0%, 90%);
+  --keypad-clr: hsl(0, 5%, 81%);
+  --screen-clr: hsl(0, 0%, 93%);
+  --delete-btn-clr: hsl(185, 42%, 37%);
+  --delete-btn-shadow-clr: hsl(185, 58%, 25%);
+  --equal-btn-clr: hsl(25, 98%, 40%);
+  --equal-btn-shadow-clr: hsl(25, 99%, 27%);
+  --key-clr: hsl(45, 7%, 89%);
+  --key-shadow-clr: hsl(35, 11%, 61%);
+  --text-clr: hsl(60, 10%, 19%);
+  --white-clr: hsl(0, 0%, 100%);
+}
+
+.purple-mode {
+  --main-bg-clr: hsl(268, 75%, 9%);
+  --keypad-clr: hsl(268, 71%, 12%);
+  --screen-clr: hsl(268, 71%, 12%);
+  --delete-btn-clr: hsl(281, 89%, 26%);
+  --delete-btn-shadow-clr: hsl(285, 91%, 52%);
+  --equal-btn-clr: hsl(176, 100%, 44%);
+  --equal-btn-shadow-clr: hsl(177, 92%, 70%);
+  --key-clr: hsl(268, 47%, 21%);
+  --key-shadow-clr: hsl(290, 70%, 36%);
+  --text-clr: hsl(52, 100%, 62%);
+  --equal-text-clr: hsl(198, 20%, 13%);
+  --white-clr: hsl(0, 0%, 100%);
+}
+
+/* Body */
+
+body {
+  font-family: var(--body-ff);
+  font-size: var(--fs);
+  background-color: var(--main-bg-clr);
+  font-weight: 700;
+}
+
+/* Main */
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Calculator */
+
+.calculator {
+  max-width: 500px;
+  flex: 1;
+  margin-inline: 12px;
+}
+
+.text {
+  color: var(--white-clr);
+}
+
+.letter-space,
+.theme-number {
+  color: var(--white-clr);
+  font-size: 1rem;
+}
+
+.letter-space {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.theme-number:not(:last-child) {
+  margin-right: 5px;
+}
+
+.button-wrapper {
+  width: 70px;
+  height: 30px;
+  background-color: var(--screen-clr);
+  border-radius: 100vh;
+  display: flex;
+  position: relative;
+}
+
+.button-wrapper.start {
+  justify-content: flex-start;
+}
+
+.button-wrapper.center {
+  justify-content: center;
+}
+
+.button-wrapper.end {
+  justify-content: flex-end;
+}
+
+.theme-btn {
+  position: relative;
+  flex: 1;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-inline: 5px;
+  background-color: var(--equal-btn-clr);
+  transition: 200ms linear;
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.screen {
+  padding: 32px 24px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--screen-clr);
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+/* Keypad */
+
+.keypad {
+  padding: 24px;
+  background-color: var(--keypad-clr);
+  border-radius: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.grid-item {
+  border-radius: 10px;
+  transition: 200ms linear;
+  padding-top: 5px;
+}
+
+.grid-item:not(:nth-child(4), :nth-child(17), :last-child) {
+  background-color: var(--key-clr);
+  box-shadow: 0 3px 0 var(--key-shadow-clr);
+  color: var(--text-clr);
+}
+
+.grid-item:nth-child(4),
+.grid-item:nth-child(17) {
+  color: var(--white-clr);
+  background-color: var(--delete-btn-clr);
+  text-transform: uppercase;
+  box-shadow: 0 3px 0 var(--delete-btn-shadow-clr);
+}
+
+.grid-item:nth-child(17) {
+  grid-column: 1 / 3;
+}
+
+.grid-item:last-child {
+  grid-column: 3 / 5;
+  color: var(--white-clr);
+  background-color: var(--equal-btn-clr);
+  box-shadow: 0 3px 0 var(--equal-btn-shadow-clr);
+}
+
+/* Hover States */
+
+.button-wrapper:hover .indicator,
+.grid-item:hover {
+  filter: brightness(150%);
+}
+
+/* Media Queries */
+
+@media all and (max-width: 414px) {
+  .grid-container {
+    gap: 16px;
+  }
+}
